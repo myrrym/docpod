@@ -1,0 +1,25 @@
+# docpod configuration. Copy to config.toml (or pass --config path/to/file.toml).
+# Every field is optional — these are the defaults. CLI flags override this file.
+
+[llm]
+provider = "anthropic"        # "anthropic" | "openai"
+model = "claude-sonnet-5"     # any model id the provider accepts
+
+[tts]
+provider = "openai"           # "elevenlabs" | "openai"
+
+[episode]
+length = "10min"              # advisory target, not enforced — becomes a word budget
+tone = "conversational"       # free text, passed to the script prompt
+
+# Speakers are a named map, not a fixed count. v1 supports a single narrator;
+# the format is designed so future versions can voice as many speakers as you
+# define here, matched to [SPEAKER] tags in script.md.
+[speakers.narrator]
+voice = "alloy"               # provider-specific voice id (e.g. an ElevenLabs voice id)
+
+[chunking]
+# Documents under this token estimate are extracted in a single LLM call.
+# Larger ones are split on structure (headings/pages) and merged in a final pass.
+single_call_max_tokens = 150000
+chunk_target_tokens = 20000
