@@ -9,6 +9,8 @@ provider directly.
 from abc import ABC, abstractmethod
 from pathlib import Path
 
+from ..errors import DocpodError
+
 
 class TTSProvider(ABC):
     """Voices one script segment at a time.
@@ -20,6 +22,8 @@ class TTSProvider(ABC):
 
     #: config name, e.g. "elevenlabs" or "openai"
     name: str
+    #: voice used when a speaker has no voice configured
+    default_voice: str
 
     @abstractmethod
     def synthesize(self, text: str, voice: str, out_path: Path) -> Path:
@@ -32,6 +36,6 @@ class TTSProvider(ABC):
         """Voice ids the configured account can use (for `docpod voices`)."""
 
 
-class TTSError(RuntimeError):
+class TTSError(DocpodError):
     """A provider call failed. The pipeline keeps completed segments on disk so
     a re-run resumes from the first missing segment."""

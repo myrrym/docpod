@@ -96,8 +96,9 @@ rewrite.
 
 ## Prompts are yours to edit
 
-The two LLM prompts live as plain files in [`prompts/`](prompts/) — `extract.md`
-(stage 1: structure the concepts) and `script.md` (stage 2: write the spoken script).
+The LLM prompts live as plain files in [`prompts/`](prompts/) — `extract.md`
+(stage 1: structure the concepts), `script.md` (stage 2: write the spoken script),
+and `merge.md` (used only when a document is too large for one extract call).
 Tweak them freely; no code changes needed.
 
 ## v1 scope

@@ -1,5 +1,6 @@
 .env
 config.toml
+.venv/
 *.docpod/
 __pycache__/
 *.egg-info/
